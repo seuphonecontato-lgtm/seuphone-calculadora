@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Calculadora de Troca — SeuPhone</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0f0f0f;
+    color: #f0f0f0;
+    padding: 16px;
+    min-height: 100vh;
+  }
+  h1 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #f0f0f0;
+    margin-bottom: 16px;
+    text-align: center;
+    letter-spacing: -0.3px;
+  }
+  .card {
+    background: #1c1c1e;
+    border: 0.5px solid #2c2c2e;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .card-label {
+    font-size: 12px;
+    color: #8e8e93;
+    margin-bottom: 8px;
+  }
+  .planos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .plano-btn {
+    padding: 10px 4px;
+    font-size: 13px;
+    border-radius: 10px;
+    border: 0.5px solid #2c2c2e;
+    background: transparent;
+    color: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .plano-btn.active {
+    border: 2px solid #0a84ff;
+    background: rgba(10,132,255,0.12);
+    color: #0a84ff;
+    font-weight: 600;
+  }
+  .input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .input-card {
+    background: #1c1c1e;
+    border: 0.5px solid #2c2c2e;
+    border-radius: 14px;
+    padding: 12px 14px;
+  }
+  .input-card label {
+    display: block;
+    font-size: 12px;
+    color: #8e8e93;
+    margin-bottom: 6px;
+  }
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .input-wrap span { font-size: 13px; color: #8e8e93; }
+  .input-wrap input {
+    width: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: #f0f0f0;
+    outline: none;
+  }
+
+  /* tabela ajustada */
+  .tabela-ajustada {
+    background: rgba(10,132,255,0.07);
+    border: 0.5px solid rgba(10,132,255,0.25);
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tabela-ajustada .lbl { font-size: 12px; color: #8e8e93; }
+  .tabela-ajustada .val { font-size: 15px; font-weight: 700; color: #0a84ff; }
+  #tabela-ajustada-wrap { display: none; }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 7px;
+  }
+  .row:last-child { margin-bottom: 0; }
+  .row .lbl { color: #8e8e93; }
+  .row .val { font-weight: 500; }
+  .divider { border: none; border-top: 0.5px solid #2c2c2e; margin: 10px 0; }
+  .row.destaque .lbl { color: #30d158; font-weight: 600; }
+  .row.destaque .val { color: #30d158; font-weight: 700; font-size: 15px; }
+
+  .comissao-config {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .comissao-config .sub { font-size: 11px; color: #636366; margin-top: 2px; }
+  .pct-wrap { display: flex; align-items: center; gap: 6px; }
+  .pct-wrap input {
+    width: 56px;
+    font-size: 20px;
+    font-weight: 700;
+    border: 1px solid #2c2c2e;
+    border-radius: 10px;
+    padding: 6px 8px;
+    background: #2c2c2e;
+    color: #f0f0f0;
+    text-align: center;
+    outline: none;
+  }
+  .pct-wrap span { font-size: 16px; color: #8e8e93; }
+
+  .slider-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .slider-row .lbl { font-size: 12px; color: #8e8e93; }
+  .slider-row .bonus-val { font-size: 14px; font-weight: 600; color: #0a84ff; }
+  input[type=range] {
+    width: 100%;
+    accent-color: #0a84ff;
+    height: 4px;
+  }
+  .slider-hints { display: flex; justify-content: space-between; font-size: 11px; color: #636366; margin-top: 5px; }
+
+  .proposta-card {
+    background: rgba(10,132,255,0.08);
+    border: 0.5px solid rgba(10,132,255,0.3);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .proposta-card .titulo { font-size: 12px; color: #0a84ff; font-weight: 600; margin-bottom: 10px; }
+
+  .comissao-card {
+    background: #1c1c1e;
+    border: 2px solid #0a84ff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .comissao-card .left .titulo { font-size: 13px; font-weight: 600; color: #f0f0f0; }
+  .comissao-card .left .sub { font-size: 11px; color: #636366; margin-top: 3px; }
+  .comissao-card .valor { font-size: 26px; font-weight: 800; color: #0a84ff; }
+</style>
+</head>
+<body>
+
+<h1>Calculadora de Troca</h1>
+
+<!-- Plano -->
+<div class="card">
+  <p class="card-label">Plano de parcelamento</p>
+  <div class="planos" id="planos">
+    <button class="plano-btn active" onclick="setPlano(this,'12x',12.55,1.00)">12x — 12,55%</button>
+    <button class="plano-btn" onclick="setPlano(this,'18x',16.83,1.06)">18x — 16,83%</button>
+    <button class="plano-btn" onclick="setPlano(this,'21x',18.00,1.09)">21x — 18,00%</button>
+    <button class="plano-btn" onclick="setPlano(this,'PIX',1.50,1.00)">PIX maq. — 1,50%</button>
+  </div>
+</div>
+
+<!-- Valores -->
+<div class="input-row">
+  <div class="input-card">
+    <label>Aparelho novo (tabela 12x)</label>
+    <div class="input-wrap">
+      <span>R$</span>
+      <input type="number" id="novo" value="11399" inputmode="numeric" oninput="calc()">
+    </div>
+  </div>
+  <div class="input-card">
+    <label>Troca proposta</label>
+    <div class="input-wrap">
+      <span>R$</span>
+      <input type="number" id="troca" value="5900" inputmode="numeric" oninput="calc()">
+    </div>
+  </div>
+</div>
+
+<!-- Tabela ajustada (só aparece em 18x/21x) -->
+<div id="tabela-ajustada-wrap">
+  <div class="tabela-ajustada">
+    <span class="lbl" id="tabela-ajustada-label">Tabela em 18x (+6%)</span>
+    <span class="val" id="tabela-ajustada-val">R$ 12.083</span>
+  </div>
+</div>
+
+<!-- Resultado base -->
+<div class="card">
+  <p class="card-label">Resultado sem bonificação</p>
+  <div class="row"><span class="lbl">Na maquininha</span><span class="val" id="r-maq">R$ 5.499</span></div>
+  <div class="row"><span class="lbl">Taxa sobre valor cheio</span><span class="val" id="r-taxa-cheio" style="color:#8e8e93">−R$ 1.430</span></div>
+  <div class="row"><span class="lbl">Taxa sobre maquininha</span><span class="val" id="r-taxa-maq" style="color:#8e8e93">−R$ 690</span></div>
+  <hr class="divider">
+  <div class="row destaque"><span class="lbl">Margem disponível</span><span class="val" id="r-margem">R$ 740</span></div>
+</div>
+
+<!-- Comissão config -->
+<div class="card">
+  <div class="comissao-config">
+    <div>
+      <p class="card-label" style="margin:0">Comissão do vendedor</p>
+      <p class="sub">% sobre a margem retida</p>
+    </div>
+    <div class="pct-wrap">
+      <input type="number" id="comissao-pct" value="5" min="0" max="100" inputmode="numeric" oninput="calcBonus()">
+      <span>%</span>
+    </div>
+  </div>
+</div>
+
+<!-- Slider bonificação -->
+<div class="card">
+  <div class="slider-row">
+    <span class="lbl">Bonificação extra na troca</span>
+    <span class="bonus-val" id="bonus-label">+R$ 0</span>
+  </div>
+  <input type="range" id="bonus" min="0" max="740" value="0" step="1" oninput="calcBonus()">
+  <div class="slider-hints">
+    <span>Sem bonificar</span>
+    <span id="max-label">Máximo: R$ 740</span>
+  </div>
+</div>
+
+<!-- Proposta final -->
+<div class="proposta-card">
+  <p class="titulo">PROPOSTA FINAL</p>
+  <div class="row"><span class="lbl">Troca aceita</span><span class="val" id="f-troca">R$ 5.900</span></div>
+  <div class="row"><span class="lbl">Na maquininha</span><span class="val" id="f-maq">R$ 5.499</span></div>
+  <div class="row"><span class="lbl" id="f-parcela-label">Parcela (12x)</span><span class="val" id="f-parcela">R$ 458,25</span></div>
+  <hr class="divider">
+  <div class="row"><span class="lbl">Margem retida</span><span class="val" id="f-margem-rest" style="color:#30d158">R$ 740</span></div>
+</div>
+
+<!-- Comissão destaque -->
+<div class="comissao-card">
+  <div class="left">
+    <p class="titulo">Comissão do vendedor</p>
+    <p class="sub" id="comissao-desc">5% × R$ 740 retidos</p>
+  </div>
+  <span class="valor" id="f-comissao">R$ 37</span>
+</div>
+
+<script>
+// plano: nome, taxa do cartão, multiplicador sobre tabela 12x
+let planoAtual = {nome:'12x', taxa:12.55, mult:1.00};
+
+function fmt(v){ return 'R$ ' + Math.round(v).toLocaleString('pt-BR'); }
+function fmtDec(v){ return 'R$ ' + v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+
+function setPlano(btn, nome, taxa, mult){
+  document.querySelectorAll('.plano-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  planoAtual = {nome, taxa, mult};
+  calc();
+}
+
+function calc(){
+  const novo12 = parseFloat(document.getElementById('novo').value)||0;
+  const troca  = parseFloat(document.getElementById('troca').value)||0;
+  const taxa   = planoAtual.taxa / 100;
+  const mult   = planoAtual.mult;
+  const nome   = planoAtual.nome;
+
+  // valor real do aparelho no plano escolhido
+  const novoReal = novo12 * mult;
+
+  // mostrar tabela ajustada só em 18x e 21x
+  const wrap = document.getElementById('tabela-ajustada-wrap');
+  if (mult !== 1.00 && nome !== 'PIX') {
+    wrap.style.display = 'block';
+    const pctLabel = mult === 1.06 ? '+6%' : '+9%';
+    document.getElementById('tabela-ajustada-label').textContent = `Tabela em ${nome} (${pctLabel})`;
+    document.getElementById('tabela-ajustada-val').textContent = fmt(novoReal);
+  } else {
+    wrap.style.display = 'none';
+  }
+
+  const maq      = Math.max(0, novoReal - troca);
+  const taxaCheio = novoReal * taxa;
+  const taxaMaq   = maq * taxa;
+  const margem    = Math.max(0, taxaCheio - taxaMaq);
+
+  document.getElementById('r-maq').textContent        = fmt(maq);
+  document.getElementById('r-taxa-cheio').textContent = '−' + fmt(taxaCheio);
+  document.getElementById('r-taxa-maq').textContent   = '−' + fmt(taxaMaq);
+  document.getElementById('r-margem').textContent     = fmt(margem);
+
+  const slider = document.getElementById('bonus');
+  slider.max   = Math.floor(margem);
+  slider.value = Math.min(parseFloat(slider.value)||0, Math.floor(margem));
+  document.getElementById('max-label').textContent = 'Máximo: ' + fmt(margem);
+
+  calcBonus();
+}
+
+function calcBonus(){
+  const novo12 = parseFloat(document.getElementById('novo').value)||0;
+  const troca  = parseFloat(document.getElementById('troca').value)||0;
+  const bonus  = parseInt(document.getElementById('bonus').value)||0;
+  const pct    = parseFloat(document.getElementById('comissao-pct').value)||0;
+  const taxa   = planoAtual.taxa / 100;
+  const mult   = planoAtual.mult;
+  const nome   = planoAtual.nome;
+
+  const novoReal    = novo12 * mult;
+  const margemTotal = Math.max(0, novoReal * taxa - Math.max(0, novoReal - troca) * taxa);
+
+  const trocaFinal  = troca + bonus;
+  const maqFinal    = Math.max(0, novoReal - trocaFinal);
+  const nParcelas   = parseInt(nome) || 1;
+  const margemRetida = Math.max(0, margemTotal - bonus);
+  const comissao    = margemRetida * (pct / 100);
+
+  document.getElementById('bonus-label').textContent = bonus > 0 ? '+' + fmt(bonus) : '+R$ 0';
+  document.getElementById('f-troca').textContent     = fmt(trocaFinal);
+  document.getElementById('f-maq').textContent       = fmt(maqFinal);
+  document.getElementById('f-parcela-label').textContent = 'Parcela (' + nome + ')';
+  document.getElementById('f-parcela').textContent   = nome.includes('x') ? fmtDec(maqFinal / nParcelas) : fmt(maqFinal);
+
+  const mrEl = document.getElementById('f-margem-rest');
+  mrEl.textContent = fmt(margemRetida);
+  mrEl.style.color = margemRetida < 100 ? '#ff9f0a' : '#30d158';
+
+  document.getElementById('f-comissao').textContent  = fmtDec(comissao);
+  document.getElementById('comissao-desc').textContent = pct + '% × ' + fmt(margemRetida) + ' retidos';
+}
+
+calc();
+</script>
+</body>
+</html>
