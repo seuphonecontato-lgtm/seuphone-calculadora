@@ -14,101 +14,58 @@
     min-height: 100vh;
   }
   h1 {
-    font-size: 17px;
-    font-weight: 600;
-    color: #f0f0f0;
-    margin-bottom: 16px;
-    text-align: center;
-    letter-spacing: -0.3px;
+    font-size: 17px; font-weight: 600; color: #f0f0f0;
+    margin-bottom: 16px; text-align: center; letter-spacing: -0.3px;
   }
   .card {
-    background: #1c1c1e;
-    border: 0.5px solid #2c2c2e;
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
+    background: #1c1c1e; border: 0.5px solid #2c2c2e;
+    border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
   }
-  .card-label {
-    font-size: 12px;
-    color: #8e8e93;
-    margin-bottom: 8px;
-  }
-  .planos {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
+  .card-label { font-size: 12px; color: #8e8e93; margin-bottom: 8px; }
+  .planos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .plano-btn {
-    padding: 10px 4px;
-    font-size: 13px;
-    border-radius: 10px;
-    border: 0.5px solid #2c2c2e;
-    background: transparent;
-    color: #f0f0f0;
-    cursor: pointer;
-    transition: all 0.15s;
+    padding: 10px 4px; font-size: 13px; border-radius: 10px;
+    border: 0.5px solid #2c2c2e; background: transparent;
+    color: #f0f0f0; cursor: pointer; transition: all 0.15s;
   }
   .plano-btn.active {
-    border: 2px solid #0a84ff;
-    background: rgba(10,132,255,0.12);
-    color: #0a84ff;
-    font-weight: 600;
+    border: 2px solid #0a84ff; background: rgba(10,132,255,0.12);
+    color: #0a84ff; font-weight: 600;
   }
-  .input-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
+  .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
   .input-card {
-    background: #1c1c1e;
-    border: 0.5px solid #2c2c2e;
-    border-radius: 14px;
-    padding: 12px 14px;
+    background: #1c1c1e; border: 0.5px solid #2c2c2e;
+    border-radius: 14px; padding: 12px 14px;
   }
-  .input-card label {
-    display: block;
-    font-size: 12px;
-    color: #8e8e93;
-    margin-bottom: 6px;
-  }
-  .input-wrap {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-  }
+  .input-card label { display: block; font-size: 12px; color: #8e8e93; margin-bottom: 6px; }
+  .input-wrap { display: flex; align-items: center; gap: 3px; }
   .input-wrap span { font-size: 13px; color: #8e8e93; }
   .input-wrap input {
-    width: 100%;
-    font-size: 17px;
-    font-weight: 600;
-    border: none;
-    background: transparent;
-    color: #f0f0f0;
-    outline: none;
+    width: 100%; font-size: 17px; font-weight: 600;
+    border: none; background: transparent; color: #f0f0f0; outline: none;
   }
-
-  /* tabela ajustada */
+  .obs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+  .obs-card {
+    background: #1c1c1e; border: 0.5px solid #2c2c2e;
+    border-radius: 14px; padding: 12px 14px;
+  }
+  .obs-card label { display: block; font-size: 12px; color: #8e8e93; margin-bottom: 6px; }
+  .obs-card input {
+    width: 100%; font-size: 14px; font-weight: 500;
+    border: none; background: transparent; color: #f0f0f0; outline: none;
+  }
+  .obs-card input::placeholder { color: #48484a; }
   .tabela-ajustada {
-    background: rgba(10,132,255,0.07);
-    border: 0.5px solid rgba(10,132,255,0.25);
-    border-radius: 10px;
-    padding: 8px 12px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: rgba(10,132,255,0.07); border: 0.5px solid rgba(10,132,255,0.25);
+    border-radius: 10px; padding: 8px 12px; margin-bottom: 10px;
+    display: flex; justify-content: space-between; align-items: center;
   }
   .tabela-ajustada .lbl { font-size: 12px; color: #8e8e93; }
   .tabela-ajustada .val { font-size: 15px; font-weight: 700; color: #0a84ff; }
   #tabela-ajustada-wrap { display: none; }
-
   .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    margin-bottom: 7px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px; margin-bottom: 7px;
   }
   .row:last-child { margin-bottom: 0; }
   .row .lbl { color: #8e8e93; }
@@ -116,59 +73,91 @@
   .divider { border: none; border-top: 0.5px solid #2c2c2e; margin: 10px 0; }
   .row.destaque .lbl { color: #30d158; font-weight: 600; }
   .row.destaque .val { color: #30d158; font-weight: 700; font-size: 15px; }
-
-  .comissao-config {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  .comissao-config { display: flex; align-items: center; justify-content: space-between; }
   .comissao-config .sub { font-size: 11px; color: #636366; margin-top: 2px; }
   .pct-wrap { display: flex; align-items: center; gap: 6px; }
   .pct-wrap input {
-    width: 56px;
-    font-size: 20px;
-    font-weight: 700;
-    border: 1px solid #2c2c2e;
-    border-radius: 10px;
-    padding: 6px 8px;
-    background: #2c2c2e;
-    color: #f0f0f0;
-    text-align: center;
-    outline: none;
+    width: 56px; font-size: 20px; font-weight: 700;
+    border: 1px solid #2c2c2e; border-radius: 10px; padding: 6px 8px;
+    background: #2c2c2e; color: #f0f0f0; text-align: center; outline: none;
   }
   .pct-wrap span { font-size: 16px; color: #8e8e93; }
-
   .slider-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
   .slider-row .lbl { font-size: 12px; color: #8e8e93; }
   .slider-row .bonus-val { font-size: 14px; font-weight: 600; color: #0a84ff; }
-  input[type=range] {
-    width: 100%;
-    accent-color: #0a84ff;
-    height: 4px;
-  }
+  input[type=range] { width: 100%; accent-color: #0a84ff; height: 4px; }
   .slider-hints { display: flex; justify-content: space-between; font-size: 11px; color: #636366; margin-top: 5px; }
-
   .proposta-card {
-    background: rgba(10,132,255,0.08);
-    border: 0.5px solid rgba(10,132,255,0.3);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
+    background: rgba(10,132,255,0.08); border: 0.5px solid rgba(10,132,255,0.3);
+    border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
   }
   .proposta-card .titulo { font-size: 12px; color: #0a84ff; font-weight: 600; margin-bottom: 10px; }
-
   .comissao-card {
-    background: #1c1c1e;
-    border: 2px solid #0a84ff;
-    border-radius: 14px;
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background: #1c1c1e; border: 2px solid #0a84ff;
+    border-radius: 14px; padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px;
   }
   .comissao-card .left .titulo { font-size: 13px; font-weight: 600; color: #f0f0f0; }
   .comissao-card .left .sub { font-size: 11px; color: #636366; margin-top: 3px; }
   .comissao-card .valor { font-size: 26px; font-weight: 800; color: #0a84ff; }
+
+  /* Botão registrar */
+  .btn-registrar {
+    width: 100%; padding: 14px; font-size: 15px; font-weight: 700;
+    background: #30d158; color: #000; border: none; border-radius: 14px;
+    cursor: pointer; margin-bottom: 24px; letter-spacing: -0.3px;
+  }
+  .btn-registrar:active { opacity: 0.8; }
+
+  /* Acumulador do dia */
+  .acumulador {
+    background: #1c1c1e; border: 0.5px solid #2c2c2e;
+    border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
+  }
+  .acumulador-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;
+  }
+  .acumulador-header .titulo { font-size: 13px; font-weight: 600; }
+  .acumulador-header .btn-limpar {
+    font-size: 11px; color: #ff453a; background: none; border: none; cursor: pointer; padding: 2px 6px;
+  }
+  .acumulador-valores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .acum-item { background: #2c2c2e; border-radius: 10px; padding: 10px 12px; }
+  .acum-item .lbl { font-size: 11px; color: #8e8e93; margin-bottom: 4px; }
+  .acum-item .val { font-size: 18px; font-weight: 700; }
+  .acum-item .val.green { color: #30d158; }
+  .acum-item .val.blue { color: #0a84ff; }
+
+  /* Histórico */
+  .historico { margin-bottom: 24px; }
+  .historico-titulo {
+    font-size: 13px; font-weight: 600; color: #8e8e93;
+    margin-bottom: 8px; padding: 0 2px;
+  }
+  .negociacao-item {
+    background: #1c1c1e; border: 0.5px solid #2c2c2e;
+    border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+  }
+  .neg-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .neg-header .cliente { font-size: 14px; font-weight: 600; }
+  .neg-header .hora { font-size: 11px; color: #636366; }
+  .neg-modelo { font-size: 12px; color: #8e8e93; margin-bottom: 8px; }
+  .neg-valores { display: flex; gap: 10px; flex-wrap: wrap; }
+  .neg-tag {
+    font-size: 11px; padding: 3px 8px; border-radius: 6px;
+    background: #2c2c2e; color: #aeaeb2;
+  }
+  .neg-tag.green { background: rgba(48,209,88,0.12); color: #30d158; }
+  .neg-tag.blue { background: rgba(10,132,255,0.12); color: #0a84ff; }
+  .empty-hist { font-size: 13px; color: #48484a; text-align: center; padding: 20px 0; }
+
+  /* Seção separador */
+  .secao-sep {
+    font-size: 11px; font-weight: 600; color: #48484a;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin: 20px 0 10px; padding: 0 2px;
+  }
 </style>
 </head>
 <body>
@@ -204,7 +193,19 @@
   </div>
 </div>
 
-<!-- Tabela ajustada (só aparece em 18x/21x) -->
+<!-- Observação -->
+<div class="obs-row">
+  <div class="obs-card">
+    <label>Nome do cliente</label>
+    <input type="text" id="cliente" placeholder="Ex: João Silva">
+  </div>
+  <div class="obs-card">
+    <label>Aparelho da troca</label>
+    <input type="text" id="modelo-troca" placeholder="Ex: iPhone 15 Pro">
+  </div>
+</div>
+
+<!-- Tabela ajustada -->
 <div id="tabela-ajustada-wrap">
   <div class="tabela-ajustada">
     <span class="lbl" id="tabela-ajustada-label">Tabela em 18x (+6%)</span>
@@ -215,11 +216,11 @@
 <!-- Resultado base -->
 <div class="card">
   <p class="card-label">Resultado sem bonificação</p>
-  <div class="row"><span class="lbl">Na maquininha</span><span class="val" id="r-maq">R$ 5.499</span></div>
-  <div class="row"><span class="lbl">Taxa sobre valor cheio</span><span class="val" id="r-taxa-cheio" style="color:#8e8e93">−R$ 1.430</span></div>
-  <div class="row"><span class="lbl">Taxa sobre maquininha</span><span class="val" id="r-taxa-maq" style="color:#8e8e93">−R$ 690</span></div>
+  <div class="row"><span class="lbl">Na maquininha</span><span class="val" id="r-maq">—</span></div>
+  <div class="row"><span class="lbl">Taxa sobre valor cheio</span><span class="val" id="r-taxa-cheio" style="color:#8e8e93">—</span></div>
+  <div class="row"><span class="lbl">Taxa sobre maquininha</span><span class="val" id="r-taxa-maq" style="color:#8e8e93">—</span></div>
   <hr class="divider">
-  <div class="row destaque"><span class="lbl">Margem disponível</span><span class="val" id="r-margem">R$ 740</span></div>
+  <div class="row destaque"><span class="lbl">Margem disponível</span><span class="val" id="r-margem">—</span></div>
 </div>
 
 <!-- Comissão config -->
@@ -252,25 +253,70 @@
 <!-- Proposta final -->
 <div class="proposta-card">
   <p class="titulo">PROPOSTA FINAL</p>
-  <div class="row"><span class="lbl">Troca aceita</span><span class="val" id="f-troca">R$ 5.900</span></div>
-  <div class="row"><span class="lbl">Na maquininha</span><span class="val" id="f-maq">R$ 5.499</span></div>
-  <div class="row"><span class="lbl" id="f-parcela-label">Parcela (12x)</span><span class="val" id="f-parcela">R$ 458,25</span></div>
+  <div class="row"><span class="lbl">Troca aceita</span><span class="val" id="f-troca">—</span></div>
+  <div class="row"><span class="lbl">Na maquininha</span><span class="val" id="f-maq">—</span></div>
+  <div class="row"><span class="lbl" id="f-parcela-label">Parcela (12x)</span><span class="val" id="f-parcela">—</span></div>
   <hr class="divider">
-  <div class="row"><span class="lbl">Margem retida</span><span class="val" id="f-margem-rest" style="color:#30d158">R$ 740</span></div>
+  <div class="row"><span class="lbl">Margem retida</span><span class="val" id="f-margem-rest" style="color:#30d158">—</span></div>
 </div>
 
 <!-- Comissão destaque -->
 <div class="comissao-card">
   <div class="left">
     <p class="titulo">Comissão do vendedor</p>
-    <p class="sub" id="comissao-desc">5% × R$ 740 retidos</p>
+    <p class="sub" id="comissao-desc">5% × R$ 0 retidos</p>
   </div>
-  <span class="valor" id="f-comissao">R$ 37</span>
+  <span class="valor" id="f-comissao">R$ 0,00</span>
+</div>
+
+<!-- Botão registrar -->
+<button class="btn-registrar" onclick="registrar()">✓ Registrar negociação</button>
+
+<!-- Acumulador do dia -->
+<div class="acumulador">
+  <div class="acumulador-header">
+    <span class="titulo">Resumo do dia</span>
+    <button class="btn-limpar" onclick="limparHistorico()">Limpar tudo</button>
+  </div>
+  <div class="acumulador-valores">
+    <div class="acum-item">
+      <p class="lbl">Negociações</p>
+      <p class="val blue" id="acum-count">0</p>
+    </div>
+    <div class="acum-item">
+      <p class="lbl">Comissão total</p>
+      <p class="val green" id="acum-comissao">R$ 0,00</p>
+    </div>
+    <div class="acum-item">
+      <p class="lbl">Margem total gerada</p>
+      <p class="val" id="acum-margem">R$ 0</p>
+    </div>
+    <div class="acum-item">
+      <p class="lbl">Margem total retida</p>
+      <p class="val" id="acum-retida">R$ 0</p>
+    </div>
+  </div>
+</div>
+
+<!-- Histórico -->
+<div class="historico">
+  <p class="historico-titulo">Histórico da sessão</p>
+  <div id="lista-historico">
+    <p class="empty-hist">Nenhuma negociação registrada ainda</p>
+  </div>
 </div>
 
 <script>
-// plano: nome, taxa do cartão, multiplicador sobre tabela 12x
 let planoAtual = {nome:'12x', taxa:12.55, mult:1.00};
+let historico = JSON.parse(localStorage.getItem('seuphone_hist') || '[]');
+
+// Limpar histórico se for de outro dia
+const hoje = new Date().toDateString();
+if (localStorage.getItem('seuphone_data') !== hoje) {
+  historico = [];
+  localStorage.setItem('seuphone_data', hoje);
+  localStorage.setItem('seuphone_hist', '[]');
+}
 
 function fmt(v){ return 'R$ ' + Math.round(v).toLocaleString('pt-BR'); }
 function fmtDec(v){ return 'R$ ' + v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}); }
@@ -288,11 +334,8 @@ function calc(){
   const taxa   = planoAtual.taxa / 100;
   const mult   = planoAtual.mult;
   const nome   = planoAtual.nome;
-
-  // valor real do aparelho no plano escolhido
   const novoReal = novo12 * mult;
 
-  // mostrar tabela ajustada só em 18x e 21x
   const wrap = document.getElementById('tabela-ajustada-wrap');
   if (mult !== 1.00 && nome !== 'PIX') {
     wrap.style.display = 'block';
@@ -303,7 +346,7 @@ function calc(){
     wrap.style.display = 'none';
   }
 
-  const maq      = Math.max(0, novoReal - troca);
+  const maq       = Math.max(0, novoReal - troca);
   const taxaCheio = novoReal * taxa;
   const taxaMaq   = maq * taxa;
   const margem    = Math.max(0, taxaCheio - taxaMaq);
@@ -329,31 +372,123 @@ function calcBonus(){
   const taxa   = planoAtual.taxa / 100;
   const mult   = planoAtual.mult;
   const nome   = planoAtual.nome;
-
   const novoReal    = novo12 * mult;
   const margemTotal = Math.max(0, novoReal * taxa - Math.max(0, novoReal - troca) * taxa);
 
-  const trocaFinal  = troca + bonus;
-  const maqFinal    = Math.max(0, novoReal - trocaFinal);
-  const nParcelas   = parseInt(nome) || 1;
+  const trocaFinal   = troca + bonus;
+  const maqFinal     = Math.max(0, novoReal - trocaFinal);
+  const nParcelas    = parseInt(nome) || 1;
   const margemRetida = Math.max(0, margemTotal - bonus);
-  const comissao    = margemRetida * (pct / 100);
+  const comissao     = margemRetida * (pct / 100);
 
-  document.getElementById('bonus-label').textContent = bonus > 0 ? '+' + fmt(bonus) : '+R$ 0';
-  document.getElementById('f-troca').textContent     = fmt(trocaFinal);
-  document.getElementById('f-maq').textContent       = fmt(maqFinal);
+  document.getElementById('bonus-label').textContent   = bonus > 0 ? '+' + fmt(bonus) : '+R$ 0';
+  document.getElementById('f-troca').textContent        = fmt(trocaFinal);
+  document.getElementById('f-maq').textContent          = fmt(maqFinal);
   document.getElementById('f-parcela-label').textContent = 'Parcela (' + nome + ')';
-  document.getElementById('f-parcela').textContent   = nome.includes('x') ? fmtDec(maqFinal / nParcelas) : fmt(maqFinal);
+  document.getElementById('f-parcela').textContent      = nome.includes('x') ? fmtDec(maqFinal / nParcelas) : fmt(maqFinal);
 
   const mrEl = document.getElementById('f-margem-rest');
   mrEl.textContent = fmt(margemRetida);
   mrEl.style.color = margemRetida < 100 ? '#ff9f0a' : '#30d158';
 
-  document.getElementById('f-comissao').textContent  = fmtDec(comissao);
-  document.getElementById('comissao-desc').textContent = pct + '% × ' + fmt(margemRetida) + ' retidos';
+  document.getElementById('f-comissao').textContent      = fmtDec(comissao);
+  document.getElementById('comissao-desc').textContent   = pct + '% × ' + fmt(margemRetida) + ' retidos';
+}
+
+function registrar(){
+  const novo12       = parseFloat(document.getElementById('novo').value)||0;
+  const troca        = parseFloat(document.getElementById('troca').value)||0;
+  const bonus        = parseInt(document.getElementById('bonus').value)||0;
+  const pct          = parseFloat(document.getElementById('comissao-pct').value)||0;
+  const taxa         = planoAtual.taxa / 100;
+  const novoReal     = novo12 * planoAtual.mult;
+  const margemTotal  = Math.max(0, novoReal * taxa - Math.max(0, novoReal - troca) * taxa);
+  const margemRetida = Math.max(0, margemTotal - bonus);
+  const comissao     = margemRetida * (pct / 100);
+  const cliente      = document.getElementById('cliente').value.trim() || 'Cliente';
+  const modelo       = document.getElementById('modelo-troca').value.trim() || '—';
+  const hora         = new Date().toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'});
+
+  historico.unshift({
+    cliente, modelo, hora,
+    plano: planoAtual.nome,
+    trocaAceita: troca + bonus,
+    margemTotal: Math.round(margemTotal),
+    margemRetida: Math.round(margemRetida),
+    comissao
+  });
+
+  localStorage.setItem('seuphone_hist', JSON.stringify(historico));
+  renderHistorico();
+  resetForm();
+
+  // Feedback visual
+  const btn = document.querySelector('.btn-registrar');
+  btn.textContent = '✓ Registrado!';
+  btn.style.background = '#0a84ff';
+  setTimeout(() => { btn.textContent = '✓ Registrar negociação'; btn.style.background = '#30d158'; }, 1500);
+}
+
+function resetForm(){
+  document.getElementById('cliente').value = '';
+  document.getElementById('modelo-troca').value = '';
+  document.getElementById('bonus').value = 0;
+  calcBonus();
+}
+
+function renderHistorico(){
+  const lista = document.getElementById('lista-historico');
+  const acumCount    = document.getElementById('acum-count');
+  const acumComissao = document.getElementById('acum-comissao');
+  const acumMargem   = document.getElementById('acum-margem');
+  const acumRetida   = document.getElementById('acum-retida');
+
+  if (historico.length === 0) {
+    lista.innerHTML = '<p class="empty-hist">Nenhuma negociação registrada ainda</p>';
+    acumCount.textContent = '0';
+    acumComissao.textContent = 'R$ 0,00';
+    acumMargem.textContent = 'R$ 0';
+    acumRetida.textContent = 'R$ 0';
+    return;
+  }
+
+  let totalComissao = 0, totalMargem = 0, totalRetida = 0;
+  historico.forEach(n => {
+    totalComissao += n.comissao;
+    totalMargem   += n.margemTotal;
+    totalRetida   += n.margemRetida;
+  });
+
+  acumCount.textContent    = historico.length;
+  acumComissao.textContent = fmtDec(totalComissao);
+  acumMargem.textContent   = fmt(totalMargem);
+  acumRetida.textContent   = fmt(totalRetida);
+
+  lista.innerHTML = historico.map(n => `
+    <div class="negociacao-item">
+      <div class="neg-header">
+        <span class="cliente">${n.cliente}</span>
+        <span class="hora">${n.hora}</span>
+      </div>
+      <div class="neg-modelo">${n.modelo} → ${n.plano}</div>
+      <div class="neg-valores">
+        <span class="neg-tag">Troca: ${fmt(n.trocaAceita)}</span>
+        <span class="neg-tag green">Margem: ${fmt(n.margemTotal)}</span>
+        <span class="neg-tag blue">Comissão: ${fmtDec(n.comissao)}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function limparHistorico(){
+  if (!confirm('Limpar todo o histórico do dia?')) return;
+  historico = [];
+  localStorage.setItem('seuphone_hist', '[]');
+  renderHistorico();
 }
 
 calc();
+renderHistorico();
 </script>
 </body>
 </html>
